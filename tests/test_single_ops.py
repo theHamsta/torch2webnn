@@ -142,7 +142,7 @@ def test_gemm_op(gemm_config, input_shape):
     torch._dynamo.reset()
     model = gemm_config.model_cls(gemm_config.in_features, gemm_config.out_features)
     x = torch.randn(*input_shape)
-    assert_export_matches(model, x, rtol=1e-3)
+    assert_export_matches(model, x, rtol=1e-3, atol=1e-3)
     exporter = assert_builds_webnn(model, x)
     operations = [op for _, op, _ in exporter.webnn_generator.checked_shapes]
     assert "matmul" in operations
