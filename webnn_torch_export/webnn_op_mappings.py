@@ -4,10 +4,9 @@ All targets are matched by str(node.target) which for ATen ops gives
 the canonical name like "aten.conv2d.default".
 """
 
-from typing import Dict, Optional
 
 # Maps str(aten_op) → converter method name on WebNNGraphGenerator.
-ATEN_OP_TABLE: Dict[str, str] = {
+ATEN_OP_TABLE: dict[str, str] = {
     "aten.conv2d.default": "_conv",
     "aten.linear.default": "_linear",
     "aten.addmm.default": "_linear",
@@ -110,7 +109,7 @@ ATEN_OP_TABLE: Dict[str, str] = {
 }
 
 
-def resolve_aten_converter(target) -> Optional[str]:
+def resolve_aten_converter(target) -> str | None:
     """Return converter method name for an ATen (or other) op target, or None."""
     return ATEN_OP_TABLE.get(str(target))
 
@@ -119,7 +118,7 @@ if __name__ == "__main__":
     from torch._decomp import _core_aten_decompositions_post_autograd
 
     aten_ops = _core_aten_decompositions_post_autograd()
-    aten_ops_as_str = set(".".join((op.name().split("::"))) for op in aten_ops.keys())
+    aten_ops_as_str = set(".".join(op.name().split("::")) for op in aten_ops.keys())
     supported_aten_str = set(ATEN_OP_TABLE.keys())
 
     missing_aten = aten_ops_as_str.difference(supported_aten_str)

@@ -6,10 +6,12 @@ Usage:
 """
 
 import os
+
 import torch
-from webnn_torch_export import export_model_with_weights
+from _common import OUTPUT_DIR, hf_login
 from flux2.util import load_flow_model
-from _common import hf_login, OUTPUT_DIR
+
+from webnn_torch_export import export_model_with_weights
 
 
 def main():
@@ -34,7 +36,7 @@ def main():
         flow_model.float().eval()
 
     total_params = sum(p.numel() for p in flow_model.parameters())
-    print(f"\nFlow Model Statistics:")
+    print("\nFlow Model Statistics:")
     print(f"  Total parameters : {total_params:,}")
     print(f"  Model size (fp32): ~{total_params * 4 / 1024**2:.1f} MB")
 
@@ -94,7 +96,7 @@ def main():
             graph_name="flux_klein_4b_flow",
             debug=False,
         )
-        print(f"Export successful!")
+        print("Export successful!")
         print(f"  Graph  : {webnn_path}  ({os.path.getsize(webnn_path) / 1024:.1f} KB)")
         print(
             f"  Weights: {weights_path}  ({os.path.getsize(weights_path) / 1024:.1f} KB)"

@@ -3,8 +3,13 @@
 import pytest
 import torch
 import torch._dynamo
+
+from .conftest import (
+    assert_builds_webnn,
+    assert_export_matches,
+    validate_webnn_execution,
+)
 from .models import RearrangeModel, SplitEven, SplitWithSizes
-from .conftest import assert_export_matches, assert_builds_webnn, validate_webnn_execution
 
 
 def test_rearrange_export():

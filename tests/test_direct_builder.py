@@ -13,8 +13,9 @@ from webnn_torch_export import (
     export_model,
     export_model_with_weights,
 )
+
 from .conftest import assert_export_matches
-from .models import SingleGroupNorm, SingleGELU, CastToFloat16AndBack
+from .models import CastToFloat16AndBack, SingleGELU, SingleGroupNorm
 
 
 @pytest.mark.parametrize(

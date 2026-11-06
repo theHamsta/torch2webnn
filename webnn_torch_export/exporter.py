@@ -1,8 +1,7 @@
 """Export fixed-size PyTorch models directly into pywebnn networks."""
 
-from typing import Tuple, Union
-from pathlib import Path
 import shutil
+from pathlib import Path
 
 import torch
 import torch.export
@@ -88,11 +87,11 @@ class CustomExporter:
 
 def export_model(
     model: torch.nn.Module,
-    example_input: Union[torch.Tensor, Tuple[torch.Tensor, ...]],
+    example_input: torch.Tensor | tuple[torch.Tensor, ...],
     debug: bool = False,
     *,
     context=None,
-) -> Tuple[CustomExporter, torch.export.ExportedProgram]:
+) -> tuple[CustomExporter, torch.export.ExportedProgram]:
     """Build a static WebNN network and check every operand's PyTorch shape.
 
     Returns (exporter, exported_program). Use exporter.to_executor() for inference.
@@ -108,7 +107,7 @@ def export_model(
 
 def export_model_with_weights(
     model: torch.nn.Module,
-    example_input: Union[torch.Tensor, Tuple[torch.Tensor, ...]],
+    example_input: torch.Tensor | tuple[torch.Tensor, ...],
     webnn_path: str,
     weights_path: str,
     debug: bool = False,

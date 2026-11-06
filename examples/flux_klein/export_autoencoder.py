@@ -30,11 +30,10 @@ import argparse
 import os
 
 import torch
+from _common import OUTPUT_DIR, hf_login
+from flux2.util import load_ae
 
 from webnn_torch_export import export_model_with_weights
-from flux2.util import load_ae
-from _common import hf_login, OUTPUT_DIR
-
 
 # ---------------------------------------------------------------------------
 # Wrapper modules

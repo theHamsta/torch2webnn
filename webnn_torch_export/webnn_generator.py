@@ -5,14 +5,14 @@ intermediate operands introduced by decompositions. FX results are also checked
 against torch.export metadata before subsequent nodes can use them.
 """
 
-from dataclasses import dataclass
 import math
 import operator
+from dataclasses import dataclass
 
 import torch
-import torch.fx as fx
 import torch.nn.functional as F
 import webnn
+from torch import fx
 from torch.utils import _pytree
 
 from .webnn_op_mappings import resolve_aten_converter

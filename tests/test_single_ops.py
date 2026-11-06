@@ -5,8 +5,21 @@ Covers: Conv2d, matmul, Linear × multiple configurations.
 
 import pytest
 import torch
-from .models import SingleConv, SingleMatmul, SingleLinear, SingleMM, SingleAddMM, SingleScaledDotProduct, SingleEinsum
-from .conftest import assert_export_matches, assert_builds_webnn, validate_webnn_execution
+
+from .conftest import (
+    assert_builds_webnn,
+    assert_export_matches,
+    validate_webnn_execution,
+)
+from .models import (
+    SingleAddMM,
+    SingleConv,
+    SingleEinsum,
+    SingleLinear,
+    SingleMatmul,
+    SingleMM,
+    SingleScaledDotProduct,
+)
 
 
 class ConvOpConfig:

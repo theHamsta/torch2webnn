@@ -5,9 +5,9 @@ Tests a complete model export scenario.
 
 import pytest
 import torch
-from .models import MNISTClassifier, SimplerMNISTClassifier
-from .conftest import assert_export_matches, validate_webnn_execution
 
+from .conftest import assert_export_matches, validate_webnn_execution
+from .models import MNISTClassifier, SimplerMNISTClassifier
 
 # ---------------------------------------------------------------------------
 # Fixtures
