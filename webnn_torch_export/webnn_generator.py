@@ -31,10 +31,12 @@ class CheckedOperand:
 DTYPES = {
     torch.float32: "float32",
     torch.float16: "float16",
+    torch.bfloat16: "bfloat16",
     torch.int32: "int32",
     torch.int64: "int64",
     torch.int8: "int8",
     torch.uint8: "uint8",
+    torch.float8_e4m3fn: "float8_e4m3fn",
     torch.uint32: "uint32",
     torch.uint64: "uint64",
 }
